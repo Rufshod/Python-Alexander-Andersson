@@ -61,7 +61,7 @@ Detta gör vi för att modellen enklare ska kunna nyttjas på ett enkelt sätt a
 När vi bevarat modellen kan vi med hjälp av Flask web framework skapa en REST API. 
 Då kan vi tillexempel lägga den i molnet. 
 
-Källor: (Spoiler ↓)
+Källor:
 >! 
 Dataset:
 https://www.kaggle.com/datasets/lespin/house-prices-dataset
