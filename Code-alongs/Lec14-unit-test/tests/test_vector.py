@@ -15,7 +15,7 @@ path_to_vector_module = os.path.abspath("../")
 sys.path.append(path_to_vector_module)
 print(path_to_vector_module)
 
-from vector import Vector
+from vector import Vector # Importing our vector.py
 
 
 class TestVector(unittest.TestCase):
@@ -77,6 +77,6 @@ class TestVector2(unittest.TestCase):
         v = Vector(1, 2)
         self.assertEqual(v.numbers, (1, 2))
 
-
+# Boilerplate code?
 if __name__ == "__main__":
     unittest.main()
