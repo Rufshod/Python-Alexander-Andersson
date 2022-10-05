@@ -14,7 +14,7 @@ class Shape:
 
 # x Position getter
     @property
-    def get_x_pos(self) -> int | float:
+    def x_pos(self) -> int | float:
         """Getter for x_pos"""
         return self._x_pos
 
@@ -29,7 +29,7 @@ class Shape:
 
 # y Position getter
     @property
-    def get_y_pos(self) -> int | float:
+    def y_pos(self) -> int | float:
         """Getter for y_pos"""
         return self._y_pos
 
@@ -44,7 +44,9 @@ class Shape:
 
 x = Shape(1,2)
 
-# + __init__(self, x_pos ,y_pos)
+class Circle(Shape):
+    super().__ini
+
 #+ __repr__()
 #+ __str__()
 
