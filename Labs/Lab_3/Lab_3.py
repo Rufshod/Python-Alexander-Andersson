@@ -32,7 +32,7 @@
 
 
 # Radie Setter 
-
+    #def(self, radie, xpos, ypos)
 
 # def is_unit_circle(self) -> bool:
     # if unit is circle
@@ -40,7 +40,7 @@
         # else:
         # return false
         # EXAMPLE
-        
+
 
 
 # def calc_area(self) -> float:
