@@ -42,19 +42,71 @@ class Shape:
         # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
         self._y_pos = value
 
-x = Shape(1,2)
 
-class Circle(Shape):
-    super().__ini
+# -------------------- Overloading Operators, Shape Class  -------------------- # PLACEHOLDER CODE
 
-#+ __repr__()
-#+ __str__()
+
+# __eq__(self, other) ==
+    def __eq__(self, other: Shape) -> bool:
+        """Checks Equality between Shapes""" # TODO ADD AREA CHECKER
+        if type(self) == other:
+            return True
+        else:
+            return False
 
 #+ __lt__(self, other) <
+    def __lt__(self, other: Shape) -> bool:
+        """Checks less than between Shapes""" # TODO ADD AREA CHECKER
+        if type(self) < other:
+            return True
+        else:
+            return False
+
 #+ __gt__(self, other) >
+    def __gt__(self, other: Shape) -> bool:
+        """Checks greater than between Shapes""" # TODO ADD AREA CHECKER
+        if type(self) > other:
+            return True
+        else:
+            return False
+
 #+ __le__(self, other) <=
+    def __le__(self, other: Shape) -> bool:
+        """Checks less or equal between Shapes""" # TODO ADD AREA CHECKER
+        if type(self) <= other:
+            return True
+        else:
+            return False
+
 #+ __ge__(self, other) >=
+    def __ge__(self, other: Shape) -> bool:
+        """Checks greator or equal between Shapes""" # TODO ADD AREA CHECKER
+        if type(self) >= other:
+            return True
+        else:
+            return False
+
+
 #+ translation(x, y) -> Shape
+    def translation(self, x_value: float | int, y_value: float | int,): # This should add the x and or y to self.x or self.y
+        self.x_pos += x_value
+        self.y_pos += y_value
+
+
+
+
+
+#+ __repr__()
+    def __repr__(self) -> str:
+        """When print function is called, returns the x position and y position of the shape"""
+        return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
+#+ __str__()
+
+
+a = Shape(10,20)
+print(a)
+a.translation(10,0)
+print(a)
 
 #- in_object(self, point) -> bool:
 
@@ -66,6 +118,9 @@ class Circle(Shape):
 
 
 #Circle class
+
+class Circle(Shape):
+
 
 # - radie: float = 1
 # x_pos: float = 0
