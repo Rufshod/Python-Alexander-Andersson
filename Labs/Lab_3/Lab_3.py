@@ -10,7 +10,7 @@ import math
 class Shape:
     """The Super class named Shape"""
 
-    def __init__(self, x_pos: int | float, y_pos: int | float) -> None:
+    def __init__(self, x_pos: int | float = 1, y_pos: int | float = 1) -> None:
         self.x_pos = x_pos
         self.y_pos = y_pos
 
@@ -114,9 +114,10 @@ class Shape:
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
 
-a = Shape(10, 20)
+a = Shape()
 print(a)
-a.translation(10, 0)
+#a.translation(10, 0)
+a.x_pos = 100
 print(a)
 
 # - in_object(self, point) -> bool:
@@ -134,8 +135,8 @@ print(a)
 class Circle(Shape):
     def __init__(
         self, x_pos: int | float, y_pos: int | float, c_radius: int | float
-    ) -> None:
-        super().__init__(x_pos, y_pos, c_radius)
+) -> None:
+        super().__init__(x_pos, y_pos)
         self.c_radius = c_radius
 
     # -------------------- Getter and Setter for Circle Class + Error Handling -------------------- #
@@ -145,11 +146,19 @@ class Circle(Shape):
         return self._c_radius  # Getter
 
     @c_radius.setter
-    def c_radius(self, value: int | float):  # Setter
-        if isinstance(value, (float | int)):
+    def c_radius(self, value: float | int):  # Setter
+        if isinstance(value,  float): # TODO. CHANGE TO FLOAT AND INT
             raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
         else:
             return self._c_radius
+
+    @property
+    def area(self):
+        return math.pi*self.c_radius**2
+
+
+#c = Circle(5, 10, 1)
+#print(c)
 
 
 # x_pos: float = 0
