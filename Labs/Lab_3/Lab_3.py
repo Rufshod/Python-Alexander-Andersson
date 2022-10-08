@@ -4,6 +4,10 @@ from turtle import circle
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import os
+
+os.system("cls||clear")
+
 
 # TODO
 # Shape class
@@ -114,11 +118,11 @@ class Shape:
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
 
-a = Shape()
-print(a)
+#a = Shape()
+#print(a)
 #a.translation(10, 0)
-a.x_pos = 100
-print(a)
+#a.x_pos = 100
+#print(a)
 
 # - in_object(self, point) -> bool:
 
@@ -134,31 +138,56 @@ print(a)
 
 class Circle(Shape):
     def __init__(
-        self, x_pos: int | float, y_pos: int | float, c_radius: int | float
-) -> None:
+        self, x_pos: (int | float) = 1, y_pos: (int | float) = 1, c_radius: (int | float) = 1) -> None:
         super().__init__(x_pos, y_pos)
         self.c_radius = c_radius
 
     # -------------------- Getter and Setter for Circle Class + Error Handling -------------------- #
 
     @property
-    def c_radius(self):
+    def c_radius(self) -> float:
+        """Sets the radius of the Circle object"""
         return self._c_radius  # Getter
 
     @c_radius.setter
-    def c_radius(self, value: float | int):  # Setter
-        if isinstance(value,  float): # TODO. CHANGE TO FLOAT AND INT
+    def c_radius(self, value: (float | int)):  # Setter
+        if isinstance(value,  float or int): # TODO. CHANGE TO FLOAT AND INT
             raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
         else:
-            return self._c_radius
+            self._c_radius = value
 
     @property
-    def area(self):
-        return math.pi*self.c_radius**2
+    def area(self) -> (int | float):   
+        """Calculates the area of the Cricle object"""         # Check the area of Circle
+        return math.pi*self._c_radius**2
+
+    @property
+    def circumference(self) -> (int | float):           # Check the Circumfurence of Cirlce
+        """The Circumference of the Circle object"""
+        return 2 * math.pi * self.c_radius
+
+ 
+### TESTCODE!!!!!!!
+    def __repr__(self) -> str:
+        """"Describes self as a string"""
+        return f"Circle(x = {self.x_pos}, y = {self.y_pos}, radius = {self.c_radius})"
+
+    def __str__(self) -> str:
+        """Describes self as a string for printing"""
+        return f"Circle in position x: {self.x_pos}, y: {self.y_pos}, with radius: {self.c_radius}, area: {self.area}, circumference: {self.circumference}"
 
 
-#c = Circle(5, 10, 1)
+
+
+#c = Circle(0,0,0)
 #print(c)
+
+
+c = Circle(5, 10, 15)
+print(c)
+
+
+#print(c.c_radius(10))
 
 
 # x_pos: float = 0
