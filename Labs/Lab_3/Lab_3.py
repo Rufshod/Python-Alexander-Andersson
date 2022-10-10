@@ -103,15 +103,6 @@ class Shape:
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
 
-# - in_object(self, point) -> bool:
-
-# x_pos: int = 0
-# y_pos: int = 0
-
-# area = None
-# omkrets = None
-
-
 # Circle class
 
 
