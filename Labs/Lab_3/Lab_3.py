@@ -56,32 +56,31 @@ class Shape:
         # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
         self._y_pos = value
 
-    # -------------------- Overloading Operators, Shape Class  -------------------- # 
+    # -------------------- Overloading Operators, Shape Class  -------------------- #
 
     # __eq__(self, other) ==
     def __eq__(self, other: Shape) -> bool:
-        """Checks Equality (==) between Shapes""" 
+        """Checks Equality (==) between Shapes"""
         return self.area == other.area
-
 
     # + __lt__(self, other) <
     def __lt__(self, other) -> bool:
-        """Checks less than (<) between Shapes""" 
+        """Checks less than (<) between Shapes"""
         return self.area == other.area
 
     # + __gt__(self, other) >
     def __gt__(self, other) -> bool:
-        """Checks greater than (>) between Shapes"""  
+        """Checks greater than (>) between Shapes"""
         return self.area == other.area
 
     # + __le__(self, other) <=
     def __le__(self, other) -> bool:
-        """Checks less or equal (<=) between Shapes"""  
+        """Checks less or equal (<=) between Shapes"""
         return self.area == other.area
 
     # + __ge__(self, other) >=
     def __ge__(self, other) -> bool:
-        """Checks greator or equal (>=) between Shapes""" 
+        """Checks greator or equal (>=) between Shapes"""
         return self.area == other.area
 
     # + translation(x, y) -> Shape
@@ -118,8 +117,13 @@ class Shape:
 
 class Circle(Shape):
     """Circle class, subclass from superclass Shape"""
+
     def __init__(
-        self, x_pos: (int | float) = 1, y_pos: (int | float) = 1, c_radius: (int | float) = 1) -> None:
+        self,
+        x_pos: (int | float) = 1,
+        y_pos: (int | float) = 1,
+        c_radius: (int | float) = 1,
+    ) -> None:
         super().__init__(x_pos, y_pos)
         self.c_radius = c_radius
 
@@ -132,21 +136,20 @@ class Circle(Shape):
 
     @c_radius.setter
     def c_radius(self, value: (float | int)):  # Setter
-        if isinstance(value,  float or int): # TODO. CHANGE TO FLOAT AND INT
+        if isinstance(value, float or int):  # TODO. CHANGE TO FLOAT AND INT
             raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
         else:
             self._c_radius = value
 
     @property
-    def area(self) -> (int | float):   
-        """Calculates the area of the Cricle object"""         # Check the area of Circle
-        return math.pi*self._c_radius**2
+    def area(self) -> (int | float):
+        """Calculates the area of the Cricle object"""  # Check the area of Circle
+        return math.pi * self._c_radius**2
 
     @property
-    def circumference(self) -> (int | float):           # Check the Circumfurence of Cirlce
+    def circumference(self) -> (int | float):  # Check the Circumfurence of Cirlce
         """The Circumference of the Circle object"""
         return 2 * math.pi * self.c_radius
-
 
     @property
     def is_unit_circle(self) -> bool:
@@ -155,10 +158,10 @@ class Circle(Shape):
             return True
         else:
             return False
- 
-### PLACEHOLDER CODE!!!!!!!
+
+    ### PLACEHOLDER CODE!!!!!!!
     def __repr__(self) -> str:
-        """"Describes self as a string"""
+        """ "Describes self as a string"""
         return f"Circle(x = {self.x_pos}, y = {self.y_pos}, radius = {self.c_radius})"
 
     def __str__(self) -> str:
@@ -166,24 +169,32 @@ class Circle(Shape):
         return f"Circle in position x: {self.x_pos}, y: {self.y_pos}, with radius: {self.c_radius}, area: {self.area}, circumference: {self.circumference}"
 
 
-
-
 # Rectangle class ---------------------------------------######
 class Rectangle(Shape):
     """Rectangle Subclass, Super Class is Shape"""
-    def __init__(self, x_pos: int | float = 1, y_pos: int | float = 1, r_height: int | float = 1, r_width: int | float = 1) -> None:
+
+    def __init__(
+        self,
+        x_pos: int | float = 1,
+        y_pos: int | float = 1,
+        r_height: int | float = 1,
+        r_width: int | float = 1,
+    ) -> None:
         super().__init__(x_pos, y_pos)
         self.r_height = r_height
         self.r_width = r_width
 
-# -------------------- Getter and Setter for Rectangle Class + # TODO Error Handling -------------------- #
+    # -------------------- Getter for Rectangle Class -------------------- #
+
     @property
     def r_height(self) -> (float | int):
-        return self._r_height # Getter for height
+        return self._r_height  # Getter for height
 
     @property
     def r_width(self) -> (float | int):
-        return self._r_width # Getter for width
+        return self._r_width  # Getter for width
+
+    # -------------------- Getter for Rectangle Class + # TODO Error Handling -------------------- #
 
     @r_height.setter
     def r_height(self, value: float | int):
@@ -192,8 +203,6 @@ class Rectangle(Shape):
     @r_width.setter
     def r_width(self, value: float | int):
         self._r_width = value
-        
-
 
 
 # def is_square(self) -> bool:
