@@ -56,47 +56,33 @@ class Shape:
         # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
         self._y_pos = value
 
-    # -------------------- Overloading Operators, Shape Class  -------------------- # PLACEHOLDER CODE
+    # -------------------- Overloading Operators, Shape Class  -------------------- # 
 
     # __eq__(self, other) ==
     def __eq__(self, other: Shape) -> bool:
-        """Checks Equality between Shapes"""  # TODO ADD AREA CHECKER
-        if type(self) == other:
-            return True
-        else:
-            return False
+        """Checks Equality (==) between Shapes""" 
+        return self.area == other.area
+
 
     # + __lt__(self, other) <
-    def __lt__(self, other: Shape) -> bool:
-        """Checks less than between Shapes"""  # TODO ADD AREA CHECKER
-        if type(self) < other:
-            return True
-        else:
-            return False
+    def __lt__(self, other) -> bool:
+        """Checks less than (<) between Shapes""" 
+        return self.area == other.area
 
     # + __gt__(self, other) >
-    def __gt__(self, other: Shape) -> bool:
-        """Checks greater than between Shapes"""  # TODO ADD AREA CHECKER
-        if type(self) > other:
-            return True
-        else:
-            return False
+    def __gt__(self, other) -> bool:
+        """Checks greater than (>) between Shapes"""  
+        return self.area == other.area
 
     # + __le__(self, other) <=
-    def __le__(self, other: Shape) -> bool:
-        """Checks less or equal between Shapes"""  # TODO ADD AREA CHECKER
-        if type(self) <= other:
-            return True
-        else:
-            return False
+    def __le__(self, other) -> bool:
+        """Checks less or equal (<=) between Shapes"""  
+        return self.area == other.area
 
     # + __ge__(self, other) >=
-    def __ge__(self, other: Shape) -> bool:
-        """Checks greator or equal between Shapes"""  # TODO ADD AREA CHECKER
-        if type(self) >= other:
-            return True
-        else:
-            return False
+    def __ge__(self, other) -> bool:
+        """Checks greator or equal (>=) between Shapes""" 
+        return self.area == other.area
 
     # + translation(x, y) -> Shape
     def translation(
@@ -118,12 +104,6 @@ class Shape:
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
 
-#a = Shape()
-#print(a)
-#a.translation(10, 0)
-#a.x_pos = 100
-#print(a)
-
 # - in_object(self, point) -> bool:
 
 # x_pos: int = 0
@@ -137,6 +117,7 @@ class Shape:
 
 
 class Circle(Shape):
+    """Circle class, subclass from superclass Shape"""
     def __init__(
         self, x_pos: (int | float) = 1, y_pos: (int | float) = 1, c_radius: (int | float) = 1) -> None:
         super().__init__(x_pos, y_pos)
@@ -166,8 +147,16 @@ class Circle(Shape):
         """The Circumference of the Circle object"""
         return 2 * math.pi * self.c_radius
 
+
+    @property
+    def is_unit_circle(self) -> bool:
+        """Method for checking if the Circle object is a unit-circle"""
+        if self.c_radius == 1 and self.x_pos == 0 and self.y_pos == 0:
+            return True
+        else:
+            return False
  
-### TESTCODE!!!!!!!
+### PLACEHOLDER CODE!!!!!!!
     def __repr__(self) -> str:
         """"Describes self as a string"""
         return f"Circle(x = {self.x_pos}, y = {self.y_pos}, radius = {self.c_radius})"
@@ -179,38 +168,8 @@ class Circle(Shape):
 
 
 
-#c = Circle(0,0,0)
-#print(c)
-
-
-c = Circle(5, 10, 15)
-print(c)
-
-
-#print(c.c_radius(10))
-
-
-# x_pos: float = 0
-# y_pos: float = 0
-
-
-# def is_unit_circle(self) -> bool:
-# if unit is circle
-# return True
-# else:
-# return false
-# EXAMPLE
-
-
-# def calc_area(self) -> float:
-# radie ** Pi.
-
-# def calc_circumfurence(self) -> float:
-# calculating circum
-# return circum_answer.
-
-
-# Rectangle class
+# Rectangle class ---------------------------------------######
+class 
 
 # @property getter
 
