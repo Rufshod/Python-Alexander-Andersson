@@ -194,7 +194,7 @@ class Rectangle(Shape):
     def r_width(self) -> (float | int):
         return self._r_width  # Getter for width
 
-    # -------------------- Getter for Rectangle Class + # TODO Error Handling -------------------- #
+    # -------------------- Setter for Rectangle Class + # TODO Error Handling -------------------- #
 
     @r_height.setter
     def r_height(self, value: float | int):
@@ -204,11 +204,25 @@ class Rectangle(Shape):
     def r_width(self, value: float | int):
         self._r_width = value
 
+    # -------------------- Area Method - Rectangle -------------------- #
 
-# def is_square(self) -> bool:
-# h*w/2 = x**2
+    @property
+    def area(self) -> (int | float):
+        """Calculates the area of the Rectangle"""
+        return self.r_height * self.r_width
 
-# def calc_area(self) > float:
-# h**2 + w**2
+    # -------------------- Is it Square Method - Rectangle -------------------- #
 
-# CALC CIRCUM?????
+    @property
+    def is_square(self) -> bool:
+        """Method to see if the rectangle is square"""
+        if self.r_height == self.r_width:
+            return True
+        else:
+            return False
+
+    # -------------------- Calculate the Perimiter - Rectangle -------------------- #
+
+    @property
+    def perimiter(self) -> float | int:
+        return (self.r_height + self.r_width) * 2
