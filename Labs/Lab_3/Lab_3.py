@@ -123,11 +123,11 @@ class Circle(Shape):
         super().__init__(x_pos, y_pos)
         self.c_radius = c_radius
 
-    # -------------------- Getter and Setter for Circle Class + Error Handling -------------------- #
+    # -------------------- Getter and Setter for Circle Class + # TODO Error Handling -------------------- #
 
     @property
     def c_radius(self) -> float:
-        """Sets the radius of the Circle object"""
+        """Getter for the radius of the Circle object"""
         return self._c_radius  # Getter
 
     @c_radius.setter
@@ -169,13 +169,32 @@ class Circle(Shape):
 
 
 # Rectangle class ---------------------------------------######
-class 
+class Rectangle(Shape):
+    """Rectangle Subclass, Super Class is Shape"""
+    def __init__(self, x_pos: int | float = 1, y_pos: int | float = 1, r_height: int | float = 1, r_width: int | float = 1) -> None:
+        super().__init__(x_pos, y_pos)
+        self.r_height = r_height
+        self.r_width = r_width
 
-# @property getter
+# -------------------- Getter and Setter for Rectangle Class + # TODO Error Handling -------------------- #
+    @property
+    def r_height(self) -> (float | int):
+        return self._r_height # Getter for height
 
-# @width.setter
+    @property
+    def r_width(self) -> (float | int):
+        return self._r_width # Getter for width
 
-# @height.getter
+    @r_height.setter
+    def r_height(self, value: float | int):
+        self._r_height = value
+
+    @r_width.setter
+    def r_width(self, value: float | int):
+        self._r_width = value
+        
+
+
 
 # def is_square(self) -> bool:
 # h*w/2 = x**2
