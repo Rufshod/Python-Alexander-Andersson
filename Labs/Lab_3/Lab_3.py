@@ -56,6 +56,7 @@ class Shape:
         # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
         self._y_pos = value
 
+
     # -------------------- Overloading Operators, Shape Class  -------------------- #
 
     # __eq__(self, other) ==
@@ -127,7 +128,7 @@ class Circle(Shape):
 
     @c_radius.setter
     def c_radius(self, value: (float | int)):  # Setter
-        if isinstance(value, float or int):  # TODO. CHANGE TO FLOAT AND INT
+        if not isinstance(value, (float, int)):  # TODO. CHANGE TO FLOAT AND INT
             raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
         else:
             self._c_radius = value
@@ -149,6 +150,16 @@ class Circle(Shape):
             return True
         else:
             return False
+
+    # -------------------- Is Point Inside - Circle Method -------------------- #
+    @property
+    def point_inside_circle(self, x: (float | int), y: (float | int)) -> bool:
+        """Method to see if the point is inside the circle shape"""
+        if math.hypot(x - self.x_pos, y - self.y_pos):
+            return True
+        else:
+            return False
+
 
     ### PLACEHOLDER CODE!!!!!!!
     def __repr__(self) -> str:
@@ -218,5 +229,10 @@ class Rectangle(Shape):
     def perimiter(self) -> float | int:
         return (self.r_height + self.r_width) * 2
 
+    # -------------------- Is Point Inside - Rectangle -------------------- #
+    @property
+    def point_inside_rectangle(self) -> bool:
+        """Method to see if the point is inside the rectangle shape"""
 
-# math.hypot
+
+
