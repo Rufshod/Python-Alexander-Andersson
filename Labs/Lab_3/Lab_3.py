@@ -217,3 +217,6 @@ class Rectangle(Shape):
     @property
     def perimiter(self) -> float | int:
         return (self.r_height + self.r_width) * 2
+
+
+# math.hypot
