@@ -21,7 +21,7 @@ class Shape:
     # x Position getter
     @property
     def x_pos(self) -> int | float:
-        """Getter for x_pos"""
+        """X position for the Shape"""
         return self._x_pos
 
     # x Position setter
@@ -34,13 +34,13 @@ class Shape:
             raise TypeError(
                 f"x Position must be an int or float, not {type(value).__name__}"
             )
-        # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
-        self._x_pos = value
+
+        self._x_pos = value # Sets the x value
 
     # y Position getter
     @property
     def y_pos(self) -> int | float:
-        """Getter for y_pos"""
+        """Y position for the Shape"""
         return self._y_pos
 
     # y Position setter
@@ -53,14 +53,14 @@ class Shape:
             raise TypeError(
                 f"y Position must be an int or float, not {type(value).__name__}"
             )
-        # if not 0 <= value <= 1000: TODO, SETTING THIS FOR LATER IF NEEDED.
-        self._y_pos = value
+
+        self._y_pos = value # Sets the y value
 
 
     # -------------------- Overloading Operators, Shape Class  -------------------- #
 
     # __eq__(self, other) ==
-    def __eq__(self, other: Shape) -> bool:
+    def __eq__(self, other) -> bool:
         """Checks Equality (==) between Shapes"""
         return self.area == other.area
 
@@ -89,7 +89,8 @@ class Shape:
         self,
         x_value: float | int,
         y_value: float | int,
-    ):  # This should add the x and or y to self.x or self.y
+    ):  # This will add the values to self.x or self.y
+        """Translation method is used in order to change the values of the x, y position for """
         self.x_pos += x_value
         self.y_pos += y_value
 
@@ -123,12 +124,12 @@ class Circle(Shape):
 
     @property
     def c_radius(self) -> float:
-        """Getter for the radius of the Circle object"""
+        """Radius of the Circle object"""
         return self._c_radius  # Getter
 
     @c_radius.setter
     def c_radius(self, value: (float | int)):  # Setter
-        if not isinstance(value, (float, int)):  # TODO. CHANGE TO FLOAT AND INT
+        if not isinstance(value, (float, int)):  #Checks to see if the value is float or int
             raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
         else:
             self._c_radius = value
@@ -163,12 +164,12 @@ class Circle(Shape):
 
     ### PLACEHOLDER CODE!!!!!!!
     def __repr__(self) -> str:
-        """ "Describes self as a string"""
-        return f"Circle(x = {self.x_pos}, y = {self.y_pos}, radius = {self.c_radius})"
+        """String representation of class Circle"""
+        return f"Circle = x = {self.x_pos}, y = {self.y_pos}, radius = {self.c_radius}."
 
     def __str__(self) -> str:
         """Describes self as a string for printing"""
-        return f"Circle in position x: {self.x_pos}, y: {self.y_pos}, with radius: {self.c_radius}, area: {self.area}, circumference: {self.circumference}"
+        return f"The Circle's position is x: {self.x_pos}, y: {self.y_pos}. The radius is: {self.c_radius}, Area: {self.area}, Circumference: {self.circumference}."
 
 
 # Rectangle class ---------------------------------------######
