@@ -68,22 +68,22 @@ class Shape:
     # + __lt__(self, other) <
     def __lt__(self, other) -> bool:
         """Checks less than (<) between Shapes"""
-        return self.area == other.area
+        return self.area < other.area
 
     # + __gt__(self, other) >
     def __gt__(self, other) -> bool:
         """Checks greater than (>) between Shapes"""
-        return self.area == other.area
+        return self.area > other.area
 
     # + __le__(self, other) <=
     def __le__(self, other) -> bool:
         """Checks less or equal (<=) between Shapes"""
-        return self.area == other.area
+        return self.area <= other.area
 
     # + __ge__(self, other) >=
     def __ge__(self, other) -> bool:
         """Checks greator or equal (>=) between Shapes"""
-        return self.area == other.area
+        return self.area >= other.area
 
     # + translation(x, y) -> Shape
     def translation(
@@ -304,22 +304,4 @@ class Rectangle(Shape):
         return f"The Rectangle's position is x: {self.x_pos}, y: {self.y_pos}. The height and width is: {self.r_height}, {self.r_width}. Area: {self.area}, Perimiter: {self.perimiter}."
 
 
-#r = Rectangle(1,1,1,1)
-#print(r)
-#print(r.is_square)
-
-c1 = Circle(1,1,1)
-c2 = Circle(1,1,3)
-c3 = Circle(1,2,2)
-
-r1 = Rectangle(2,5,2,4)
-print(r1.point_inside_rectangle(1,1))#c1.plot()
-#c2.plot("b")
-
-
-#print(c)
-#print(c.is_unit_circle)
-
-#c.translation(1,2)
-#print(c)
 
