@@ -62,28 +62,40 @@ class Shape:
 
     # __eq__(self, other) ==
     def __eq__(self, other) -> bool:
-        """Checks Equality (==) between Shapes""" #Should i fix so that it checks position aswell?
+        """Checks Equality (==) between Shapes"""  
         return self.area == other.area
 
     # + __lt__(self, other) <
     def __lt__(self, other) -> bool:
         """Checks less than (<) between Shapes"""
-        return self.area < other.area
+        if self.area < other.area:
+            return True
+        else:
+            return False
 
     # + __gt__(self, other) >
     def __gt__(self, other) -> bool:
         """Checks greater than (>) between Shapes"""
-        return self.area > other.area
+        if self.area > other.area:
+            return True
+        else:
+            return False
 
     # + __le__(self, other) <=
     def __le__(self, other) -> bool:
         """Checks less or equal (<=) between Shapes"""
-        return self.area <= other.area
+        if self.area <= other.area:
+            return True
+        else:
+            return False
 
     # + __ge__(self, other) >=
     def __ge__(self, other) -> bool:
         """Checks greator or equal (>=) between Shapes"""
-        return self.area >= other.area
+        if self.area >= other.area:
+            return True
+        else:
+            return False
 
     # + translation(x, y) -> Shape
     def translation(
@@ -165,10 +177,12 @@ class Circle(Shape):
     def point_inside_circle(self, x: int | float, y: int | float) -> bool:
         """Method to see if the point is inside the circle shape"""
         if not isinstance(x, (float, int)):
-                    raise TypeError(f"x value is wrong, must be int or float.")
+            raise TypeError(f"x value is wrong, must be int or float.")
         if not isinstance(y, (float, int)):
-                    raise TypeError(f"y value is wrong, must be int or float.")
-        if math.hypot(x - self.x_pos, y - self.y_pos ) <= self.c_radius:  # uses the hypot module from math in order to calculate the euclidian distance
+            raise TypeError(f"y value is wrong, must be int or float.")
+        if (
+            math.hypot(x - self.x_pos, y - self.y_pos) <= self.c_radius
+        ):  # uses the hypot module from math in order to calculate the euclidian distance
             return True
         else:
             return False
@@ -182,7 +196,7 @@ class Circle(Shape):
         """Override string function"""
         return f"The Circle's position is x: {self.x_pos}, y: {self.y_pos}. The radius is: {self.c_radius}, Area: {self.area}, Circumference: {self.circumference}."
 
-#Placeholder plot code
+    # Placeholder plot code
     def plot(self, color="r"):
         fig, ax = plt.subplots()
         circle1 = plt.Circle(
@@ -192,7 +206,6 @@ class Circle(Shape):
         ax.autoscale()
         ax.set_aspect(1)
         plt.show()
-
 
 
 # Rectangle class ---------------------------------------######
@@ -275,22 +288,26 @@ class Rectangle(Shape):
         if not isinstance(x, (float, int)):
             raise TypeError(f"x value is wrong, must be int or float.")
         x_min = self.x_pos - self.r_width / 2
-        x_max = self.x_pos + self.r_width / 2 # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
+        x_max = (
+            self.x_pos + self.r_width / 2
+        )  # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
         if not isinstance(y, (float, int)):
             raise TypeError(f"y value is wrong, must be int or float.")
         y_min = self.y_pos - self.r_height / 2
         y_max = self.y_pos + self.r_height / 2
 
-        if x_min < x < x_max and y_min < y < y_max: # Checks to see if point is inside the rectangle
+        if (
+            x_min < x < x_max and y_min < y < y_max
+        ):  # Checks to see if point is inside the rectangle
             return True
         else:
             return False
 
-#Placeholder code to print rectangle:
+    # Placeholder code to print rectangle:
     def plot(self) -> None:
-        #define matplotlib figure and axis
+        # define matplotlib figure and axis
         fig, ax = plt.subplot()
-        #add rectangle to plot
+        # add rectangle to plot
         ax.add_patch(Rectangle((self.x_pos, self.y_pos), self.r_height, self.r_width))
         plt.show()
 
@@ -302,6 +319,3 @@ class Rectangle(Shape):
     def __str__(self) -> str:
         """Override string function"""
         return f"The Rectangle's position is x: {self.x_pos}, y: {self.y_pos}. The height and width is: {self.r_height}, {self.r_width}. Area: {self.area}, Perimiter: {self.perimiter}."
-
-
-
