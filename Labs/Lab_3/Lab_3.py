@@ -92,7 +92,11 @@ class Shape:
         y_value: float | int,
     ):  # This will add the values to self.x or self.y
         """Translation method is used in order to change the values of the x, y position for"""
+        if not isinstance(x_value, (float, int)):
+            raise TypeError("x_value must be float or int")
         self.x_pos += x_value
+        if not isinstance(y_value, (float, int)):
+            raise TypeError("y_value must be float or int")
         self.y_pos += y_value
 
     # + __repr__()
@@ -266,8 +270,12 @@ class Rectangle(Shape):
 
     def point_inside_rectangle(self, x: float | int, y: float | int) -> bool:
         """Method to see if the point is inside the rectangle shape"""
+        if not isinstance(x, (float, int)):
+            raise TypeError(f"x has wrong type")
         x_min = self.x_pos - self.r_width / 2
         x_max = self.x_pos + self.r_width / 2 # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
+        if not isinstance(y, (float, int)):
+            raise TypeError(f"y has wrong type")
         y_min = self.y_pos - self.r_height / 2
         y_max = self.y_pos + self.r_height / 2
 
