@@ -3,6 +3,7 @@ from __future__ import annotations
 from turtle import circle
 
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 import numpy as np
 import math
 import os
@@ -61,7 +62,7 @@ class Shape:
 
     # __eq__(self, other) ==
     def __eq__(self, other) -> bool:
-        """Checks Equality (==) between Shapes"""
+        """Checks Equality (==) between Shapes""" #Should i fix so that it checks position aswell?
         return self.area == other.area
 
     # + __lt__(self, other) <
@@ -156,11 +157,11 @@ class Circle(Shape):
             return False
 
     # -------------------- Is Point Inside - Circle Method -------------------- #
-    @property
-    def point_inside_circle(self, x: (float | int), y: (float | int)) -> bool:
+
+    def point_inside_circle(self, x: int | float, y: int | float) -> bool:
         """Method to see if the point is inside the circle shape"""
-        if not isinstance((x, y), (float, int)):
-            raise TypeError("X or Y must be int or float")
+       # if not isinstance((x, y), (float, int)):
+            #raise TypeError("X or Y must be int or float")
         if math.hypot(x - self.x_pos, y - self.y_pos ) <= self.c_radius:  # uses the hypot module from math in order to calculate the euclidian distance
             return True
         else:
@@ -174,6 +175,18 @@ class Circle(Shape):
     def __str__(self) -> str:
         """Override string function"""
         return f"The Circle's position is x: {self.x_pos}, y: {self.y_pos}. The radius is: {self.c_radius}, Area: {self.area}, Circumference: {self.circumference}."
+
+#Placeholder plot code
+    def plot(self, color="r"):
+        fig, ax = plt.subplots()
+        circle1 = plt.Circle(
+            (self.x_pos, self.y_pos), self.c_radius, color=color, alpha=0.5
+        )
+        ax.add_patch(circle1)
+        ax.autoscale()
+        ax.set_aspect(1)
+        plt.show()
+
 
 
 # Rectangle class ---------------------------------------######
@@ -254,6 +267,14 @@ class Rectangle(Shape):
     def point_inside_rectangle(self) -> bool:
         """Method to see if the point is inside the rectangle shape"""
 
+#Placeholder code to print rectangle:
+    def plotter(self) -> None:
+        #define matplotlib figure and axis
+        fig, ax = plt.subplot()
+        #add rectangle to plot
+        ax.add_patch(Rectangle((self.x_pos, self.y_pos), self.r_height, self.r_width))
+        plt.show()
+
     # -------------------- Representation and String __Methods__ Rectangle -------------------- #
     def __repr__(self) -> str:
         """String representation of class Rectangle"""
@@ -264,12 +285,24 @@ class Rectangle(Shape):
         return f"The Rectangle's position is x: {self.x_pos}, y: {self.y_pos}. The height and width is: {self.r_height}, {self.r_width}. Area: {self.area}, Perimiter: {self.perimiter}."
 
 
-r = Rectangle(1,1,1,1)
-print(r)
-print(r.is_square)
+#r = Rectangle(1,1,1,1)
+#print(r)
+#print(r.is_square)
 
-c = Circle(1,1,1)
-print(c)
-print(c.is_unit_circle)
+c1 = Circle(1,1,1)
+c2 = Circle(1,1,3)
+c3 = Circle(1,2,2)
 
-c.point_inside_circle(0,0)
+r1 = Rectangle(1,1,2,4)
+r1.plotter()
+
+#c1.plot()
+#c2.plot("b")
+
+
+#print(c)
+#print(c.is_unit_circle)
+
+#c.translation(1,2)
+#print(c)
+
