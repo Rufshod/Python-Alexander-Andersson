@@ -263,12 +263,21 @@ class Rectangle(Shape):
         return (self.r_height + self.r_width) * 2
 
     # -------------------- Is Point Inside - Rectangle -------------------- #
-    @property
-    def point_inside_rectangle(self) -> bool:
+
+    def point_inside_rectangle(self, x: float | int, y: float | int) -> bool:
         """Method to see if the point is inside the rectangle shape"""
+        x_min = self.x_pos - self.r_width / 2
+        x_max = self.x_pos + self.r_width / 2 # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
+        y_min = self.y_pos - self.r_height / 2
+        y_max = self.y_pos + self.r_height / 2
+
+        if x_min < x < x_max and y_min < y < y_max: # Checks to see if point is inside the rectangle
+            return True
+        else:
+            return False
 
 #Placeholder code to print rectangle:
-    def plotter(self) -> None:
+    def plot(self) -> None:
         #define matplotlib figure and axis
         fig, ax = plt.subplot()
         #add rectangle to plot
@@ -293,10 +302,8 @@ c1 = Circle(1,1,1)
 c2 = Circle(1,1,3)
 c3 = Circle(1,2,2)
 
-r1 = Rectangle(1,1,2,4)
-r1.plotter()
-
-#c1.plot()
+r1 = Rectangle(2,5,2,4)
+print(r1.point_inside_rectangle(1,1))#c1.plot()
 #c2.plot("b")
 
 
