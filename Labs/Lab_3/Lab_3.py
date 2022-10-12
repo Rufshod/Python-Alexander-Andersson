@@ -164,8 +164,10 @@ class Circle(Shape):
 
     def point_inside_circle(self, x: int | float, y: int | float) -> bool:
         """Method to see if the point is inside the circle shape"""
-       # if not isinstance((x, y), (float, int)):
-            #raise TypeError("X or Y must be int or float")
+        if not isinstance(x, (float, int)):
+                    raise TypeError(f"x value is wrong, must be int or float.")
+        if not isinstance(y, (float, int)):
+                    raise TypeError(f"y value is wrong, must be int or float.")
         if math.hypot(x - self.x_pos, y - self.y_pos ) <= self.c_radius:  # uses the hypot module from math in order to calculate the euclidian distance
             return True
         else:
@@ -271,11 +273,11 @@ class Rectangle(Shape):
     def point_inside_rectangle(self, x: float | int, y: float | int) -> bool:
         """Method to see if the point is inside the rectangle shape"""
         if not isinstance(x, (float, int)):
-            raise TypeError(f"x has wrong type")
+            raise TypeError(f"x value is wrong, must be int or float.")
         x_min = self.x_pos - self.r_width / 2
         x_max = self.x_pos + self.r_width / 2 # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
         if not isinstance(y, (float, int)):
-            raise TypeError(f"y has wrong type")
+            raise TypeError(f"y value is wrong, must be int or float.")
         y_min = self.y_pos - self.r_height / 2
         y_max = self.y_pos + self.r_height / 2
 
