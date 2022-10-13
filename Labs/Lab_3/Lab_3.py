@@ -277,7 +277,7 @@ class Rectangle(Shape):
     # -------------------- Calculate the Perimiter - Rectangle -------------------- #
 
     @property
-    def perimiter(self) -> float | int:
+    def perimiter(self) -> (float | int):
         """Method used to see the perimiter of the rectangle"""
         return (self.r_height + self.r_width) * 2
 
