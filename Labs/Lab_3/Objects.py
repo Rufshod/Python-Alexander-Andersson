@@ -1,4 +1,3 @@
-# TODO
 from __future__ import annotations
 
 import matplotlib.pyplot as plt
@@ -10,7 +9,6 @@ import os
 os.system("cls||clear")
 
 
-# TODO
 # Shape class
 class Shape:
     """The Super class named Shape"""
@@ -61,7 +59,7 @@ class Shape:
 
     # __eq__(self, other) ==
     def __eq__(self, other) -> bool:
-        """Checks Equality (==) between Shapes"""  
+        """Checks Equality (==) between Shapes"""
         return self.area == other.area
 
     # + __lt__(self, other) <
@@ -104,10 +102,14 @@ class Shape:
     ):  # This will add the values to self.x or self.y
         """Translation method is used in order to change the values of the x, y position for"""
         if not isinstance(x_value, (int, float)):
-            raise TypeError(f"x_value must be float or int. Not {type(x_value).__name__}")
+            raise TypeError(
+                f"x_value must be float or int. Not {type(x_value).__name__}"
+            )
         self.x_pos += x_value
         if not isinstance(y_value, (int, float)):
-            raise TypeError(F"y_value must be float or int. Not {type(y_value).__name__}")
+            raise TypeError(
+                f"y_value must be float or int. Not {type(y_value).__name__}"
+            )
         self.y_pos += y_value
 
     # + __repr__()
@@ -120,7 +122,6 @@ class Shape:
         """When print function is called, returns the x position and y position of the shape"""
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
-
     # --------------------------------------- Circle Class --------------------------------------- #
 
 
@@ -129,7 +130,9 @@ class Circle(Shape):
 
     def __init__(
         self,
-        x_pos: (int | float) = 1,           # Set the default value to 1 for the __init__ functions
+        x_pos: (
+            int | float
+        ) = 1,  # Set the default value to 1 for the __init__ functions
         y_pos: (int | float) = 1,
         c_radius: (int | float) = 1,
     ) -> None:
@@ -144,11 +147,13 @@ class Circle(Shape):
         return self._c_radius  # Getter
 
     @c_radius.setter
-    def c_radius(self, value: (int | float )):  # Setter
+    def c_radius(self, value: (int | float)):  # Setter
         if not isinstance(
             value, (float, int)
         ):  # Checks to see if the value is float or int
-            raise TypeError(f"Radius must be float or int, not {type(value).__name__}") # Error handling
+            raise TypeError(
+                f"Radius must be float or int, not {type(value).__name__}"
+            )  # Error handling
         if value <= 0:
             raise ValueError(f"The value of the radius must be positive, not {value}")
         self._c_radius = value
@@ -176,9 +181,13 @@ class Circle(Shape):
     def point_inside_circle(self, x: int | float, y: int | float) -> bool:
         """Method to see if the point is inside the circle shape"""
         if not isinstance(x, (float, int)):
-            raise TypeError(f"x value is wrong, must be int or float. Not {type(x).__name__}")
+            raise TypeError(
+                f"x value is wrong, must be int or float. Not {type(x).__name__}"
+            )
         if not isinstance(y, (float, int)):
-            raise TypeError(f"y value is wrong, must be int or float. Not {type(y).__name__}")
+            raise TypeError(
+                f"y value is wrong, must be int or float. Not {type(y).__name__}"
+            )
         if (
             math.hypot(x - self.x_pos, y - self.y_pos) <= self.c_radius
         ):  # uses the hypot module from math in order to calculate the euclidian distance
@@ -195,13 +204,14 @@ class Circle(Shape):
         """Override string function"""
         return f"The Circle's position is x: {self.x_pos}, y: {self.y_pos}. The radius is: {self.c_radius}, Area: {self.area}, Circumference: {self.circumference}."
 
+
 # --------------------------------------- Rectangle class --------------------------------------- #
 class Rectangle(Shape):
     """Rectangle Subclass, Super Class is Shape"""
 
     def __init__(
         self,
-        x_pos: int | float = 1,           # Set the default value to 1 for the __init__ functions
+        x_pos: int | float = 1,  # Set the default value to 1 for the __init__ functions
         y_pos: int | float = 1,
         r_height: int | float = 1,
         r_width: int | float = 1,
@@ -231,7 +241,7 @@ class Rectangle(Shape):
         if value <= 0:
             raise ValueError(f"The value of height must be positive, not {value}")
 
-        self._r_height = value # Setting the height as value
+        self._r_height = value  # Setting the height as value
 
     @r_width.setter
     def r_width(self, value: float | int):
@@ -273,13 +283,17 @@ class Rectangle(Shape):
     def point_inside_rectangle(self, x: float | int, y: float | int) -> bool:
         """Method to see if the point is inside the rectangle shape"""
         if not isinstance(x, (float, int)):
-            raise TypeError(f"x value is wrong, must be int or float. Not {type(x).__name__}")
+            raise TypeError(
+                f"x value is wrong, must be int or float. Not {type(x).__name__}"
+            )
         x_min = self.x_pos - self.r_width / 2
         x_max = (
             self.x_pos + self.r_width / 2
         )  # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
         if not isinstance(y, (float, int)):
-            raise TypeError(f"y value is wrong, must be int or float. Not {type(y).__name__}")
+            raise TypeError(
+                f"y value is wrong, must be int or float. Not {type(y).__name__}"
+            )
         y_min = self.y_pos - self.r_height / 2
         y_max = self.y_pos + self.r_height / 2
 
