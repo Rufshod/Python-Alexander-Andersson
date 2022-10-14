@@ -2,11 +2,9 @@ from __future__ import annotations
 
 from math import pi, hypot
 import os           # Imports os in order to clear terminal.
-import matplotlib.pyplot as plt
+
 
 os.system("cls||clear") # Clears the terminal between runs.
-
-#TODO x och y som representerar mittpositionen av objektet
 
 
 # Shape class
