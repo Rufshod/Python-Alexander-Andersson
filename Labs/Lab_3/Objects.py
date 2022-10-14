@@ -104,10 +104,10 @@ class Shape:
         y_value: float | int,
     ):  # This will add the values to self.x or self.y
         """Translation method is used in order to change the values of the x, y position for"""
-        if not isinstance(x_value, (float, int)):
+        if not isinstance(x_value, (int, float)):
             raise TypeError("x_value must be float or int")
         self.x_pos += x_value
-        if not isinstance(y_value, (float, int)):
+        if not isinstance(y_value, (int, float)):
             raise TypeError("y_value must be float or int")
         self.y_pos += y_value
 
@@ -122,7 +122,7 @@ class Shape:
         return f"The shape's position is x = {self.x_pos}, y = {self.y_pos}"
 
 
-# Circle class
+    # --------------------------------------- Circle Class --------------------------------------- #
 
 
 class Circle(Shape):
@@ -130,14 +130,14 @@ class Circle(Shape):
 
     def __init__(
         self,
-        x_pos: (int | float) = 1,
+        x_pos: (int | float) = 1,           # Set the default value to 1 for the __init__ functions
         y_pos: (int | float) = 1,
         c_radius: (int | float) = 1,
     ) -> None:
         super().__init__(x_pos, y_pos)
         self.c_radius = c_radius
 
-    # -------------------- Getter and Setter for Circle Class + # TODO Error Handling -------------------- #
+    # -------------------- Getter and Setter for Circle Class -------------------- #
 
     @property
     def c_radius(self) -> float:
@@ -145,11 +145,11 @@ class Circle(Shape):
         return self._c_radius  # Getter
 
     @c_radius.setter
-    def c_radius(self, value: (float | int)):  # Setter
+    def c_radius(self, value: (int | float )):  # Setter
         if not isinstance(
             value, (float, int)
         ):  # Checks to see if the value is float or int
-            raise TypeError(f"Radius must be float or int, not {type(value).__name__}")
+            raise TypeError(f"Radius must be float or int, not {type(value).__name__}") # Error handling
         if value <= 0:
             raise ValueError(f"The value of the radius must be positive, not {value}")
         self._c_radius = value
@@ -196,25 +196,13 @@ class Circle(Shape):
         """Override string function"""
         return f"The Circle's position is x: {self.x_pos}, y: {self.y_pos}. The radius is: {self.c_radius}, Area: {self.area}, Circumference: {self.circumference}."
 
-    # Placeholder plot code
-    def plot(self, color="r"):
-        fig, ax = plt.subplots()
-        circle1 = plt.Circle(
-            (self.x_pos, self.y_pos), self.c_radius, color=color, alpha=0.5
-        )
-        ax.add_patch(circle1)
-        ax.autoscale()
-        ax.set_aspect(1)
-        plt.show()
-
-
-# Rectangle class ---------------------------------------######
+# --------------------------------------- Rectangle class --------------------------------------- #
 class Rectangle(Shape):
     """Rectangle Subclass, Super Class is Shape"""
 
     def __init__(
         self,
-        x_pos: int | float = 1,
+        x_pos: int | float = 1,           # Set the default value to 1 for the __init__ functions
         y_pos: int | float = 1,
         r_height: int | float = 1,
         r_width: int | float = 1,
@@ -233,7 +221,7 @@ class Rectangle(Shape):
     def r_width(self) -> (float | int):
         return self._r_width  # Getter for width
 
-    # -------------------- Setter for Rectangle Class + # TODO Error Handling -------------------- #
+    # -------------------- Setter for Rectangle Class -------------------- #
 
     @r_height.setter
     def r_height(self, value: float | int):
@@ -244,7 +232,7 @@ class Rectangle(Shape):
         if value <= 0:
             raise ValueError(f"The value of height must be positive, not {value}")
 
-        self._r_height = value
+        self._r_height = value # Setting the height as value
 
     @r_width.setter
     def r_width(self, value: float | int):
@@ -302,14 +290,6 @@ class Rectangle(Shape):
             return True
         else:
             return False
-
-    # Placeholder code to print rectangle:
-    def plot(self) -> None:
-        # define matplotlib figure and axis
-        fig, ax = plt.subplot()
-        # add rectangle to plot
-        ax.add_patch(Rectangle((self.x_pos, self.y_pos), self.r_height, self.r_width))
-        plt.show()
 
     # -------------------- Representation and String __Methods__ Rectangle -------------------- #
     def __repr__(self) -> str:
