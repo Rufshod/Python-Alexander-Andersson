@@ -326,19 +326,3 @@ class Rectangle(Shape):
     def __str__(self) -> str:
         """Override string function"""
         return f"The Rectangle's position is x: {self.x_pos}, y: {self.y_pos}. The height and width is: {self.r_height}, {self.r_width}. Area: {self.area}, Perimiter: {self.perimiter}."
-
-cirkel1 = Circle(0,0,1) # Enhetscirkel
-cirkel2 = Circle(1,1,1)
-cirkel3 = Circle(0,0,2)
-rektangel1 = Rectangle(0,0,1,1)
-rektangel2 = Rectangle(1,1,1,1)
-rektangel3 = Rectangle(0,0,2,2)
-
-print(cirkel1==cirkel2) # True
-print(cirkel2==rektangel1) # False
-
-print(cirkel1.point_inside_circle(0.5,0.5)) # True
-
-cirkel1.translation(5,5) 
-
-print(cirkel1.point_inside_circle(0.5,0.5)) # False
