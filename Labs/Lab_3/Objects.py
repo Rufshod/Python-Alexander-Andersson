@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+from math import pi, hypot
+import os           # Imports os in order to clear terminal.
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
-import numpy as np
-import math
-import os
 
-os.system("cls||clear")
+os.system("cls||clear") # Clears the terminal between runs.
+
+#TODO x och y som representerar mittpositionen av objektet
 
 
 # Shape class
@@ -33,6 +33,7 @@ class Shape:
 
     @x_pos.setter
     def x_pos(self, value: int | float) -> int | float:
+        """Sets x position"""
         if not isinstance(
             value, (int, float)
         ):  # checks if the type in x_pos is int or float
@@ -46,6 +47,7 @@ class Shape:
 
     @y_pos.setter
     def y_pos(self, value: int | float) -> int | float:
+        """Sets y position"""
         if not isinstance(
             value, (int, float)
         ):  # checks if the type in y_pos is int or float
@@ -100,7 +102,7 @@ class Shape:
         x_value: float | int,
         y_value: float | int,
     ):  # This will add the values to self.x or self.y
-        """Translation method is used in order to change the values of the x, y position for"""
+        """Translation method is used in order to change the values of the x, y position for the given shape"""
         if not isinstance(x_value, (int, float)):
             raise TypeError(
                 f"x_value must be float or int. Not {type(x_value).__name__}"
@@ -148,6 +150,7 @@ class Circle(Shape):
 
     @c_radius.setter
     def c_radius(self, value: (int | float)):  # Setter
+        """Radius setter for Circle class"""
         if not isinstance(
             value, (float, int)
         ):  # Checks to see if the value is float or int
@@ -161,12 +164,12 @@ class Circle(Shape):
     @property
     def area(self) -> (int | float):
         """Calculates the area of the Cricle object"""  # Check the area of Circle
-        return math.pi * self._c_radius**2
+        return pi * self._c_radius**2
 
     @property
     def circumference(self) -> (int | float):  # Check the Circumfurence of Cirlce
         """The Circumference of the Circle object"""
-        return 2 * math.pi * self.c_radius
+        return 2 * pi * self.c_radius
 
     @property
     def is_unit_circle(self) -> bool:
@@ -189,7 +192,7 @@ class Circle(Shape):
                 f"y value is wrong, must be int or float. Not {type(y).__name__}"
             )
         if (
-            math.hypot(x - self.x_pos, y - self.y_pos) <= self.c_radius
+            hypot(x - self.x_pos, y - self.y_pos) <= self.c_radius
         ):  # uses the hypot module from math in order to calculate the euclidian distance
             return True
         else:
@@ -207,7 +210,7 @@ class Circle(Shape):
 
 # --------------------------------------- Rectangle class --------------------------------------- #
 class Rectangle(Shape):
-    """Rectangle Subclass, Super Class is Shape"""
+    """Rectangle Subclass, Inherits from Shape"""
 
     def __init__(
         self,
@@ -224,16 +227,19 @@ class Rectangle(Shape):
 
     @property
     def r_height(self) -> (float | int):
+        """Height for Recangle class"""
         return self._r_height  # Getter for height
 
     @property
     def r_width(self) -> (float | int):
+        """Width for Recangle class"""
         return self._r_width  # Getter for width
 
     # -------------------- Setter for Rectangle Class -------------------- #
 
     @r_height.setter
     def r_height(self, value: float | int):
+        """Setter method for rectangle height"""
         if not isinstance(
             value, (float, int)
         ):  # Checks to see if the value is float or int
@@ -245,6 +251,7 @@ class Rectangle(Shape):
 
     @r_width.setter
     def r_width(self, value: float | int):
+        """Setter method for rectangle width"""
         if not isinstance(
             value, (float, int)
         ):  # Checks to see if the value is float or int
@@ -286,15 +293,15 @@ class Rectangle(Shape):
             raise TypeError(
                 f"x value is wrong, must be int or float. Not {type(x).__name__}"
             )
-        x_min = self.x_pos - self.r_width / 2
+        x_min = self.x_pos - self.r_width / 2 # find center of rectangle
         x_max = (
             self.x_pos + self.r_width / 2
         )  # Splits the rectangle into four parts. from where the x and y position is in relation to its width and height
         if not isinstance(y, (float, int)):
             raise TypeError(
                 f"y value is wrong, must be int or float. Not {type(y).__name__}"
-            )
-        y_min = self.y_pos - self.r_height / 2
+            ) 
+        y_min = self.y_pos - self.r_height / 2 # find center of rectangle
         y_max = self.y_pos + self.r_height / 2
 
         if (
@@ -304,6 +311,13 @@ class Rectangle(Shape):
         else:
             return False
 
+   # -------------------- Center of Variables - Rectangle -------------------- #
+    def r_center(self) -> str:
+        """Calculates the center of the rectangle"""
+        r_x_center = self.x_pos + self.r_width
+        r_y_center = self.y_pos + self.r_height
+        return f"The center of the rectangle is at: x = {r_x_center}, y = {r_y_center}"
+
     # -------------------- Representation and String __Methods__ Rectangle -------------------- #
     def __repr__(self) -> str:
         """String representation of class Rectangle"""
@@ -312,3 +326,19 @@ class Rectangle(Shape):
     def __str__(self) -> str:
         """Override string function"""
         return f"The Rectangle's position is x: {self.x_pos}, y: {self.y_pos}. The height and width is: {self.r_height}, {self.r_width}. Area: {self.area}, Perimiter: {self.perimiter}."
+
+cirkel1 = Circle(0,0,1) # Enhetscirkel
+cirkel2 = Circle(1,1,1)
+cirkel3 = Circle(0,0,2)
+rektangel1 = Rectangle(0,0,1,1)
+rektangel2 = Rectangle(1,1,1,1)
+rektangel3 = Rectangle(0,0,2,2)
+
+print(cirkel1==cirkel2) # True
+print(cirkel2==rektangel1) # False
+
+print(cirkel1.point_inside_circle(0.5,0.5)) # True
+
+cirkel1.translation(5,5) 
+
+print(cirkel1.point_inside_circle(0.5,0.5)) # False
