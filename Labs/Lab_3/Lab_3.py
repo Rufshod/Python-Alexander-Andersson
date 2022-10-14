@@ -1,6 +1,5 @@
 # TODO
 from __future__ import annotations
-from turtle import circle
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
